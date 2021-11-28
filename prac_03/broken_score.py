@@ -5,14 +5,23 @@ Broken program to determine score status
 """
 
 
+def main():
+    """Get integer and determine grade"""
+    score = float(input("Enter score: "))
+    while score < 0 or score > 100:
+        print("Invalid score")
+        score = float(input("Enter score: "))
+    print(calculate_grade(score))
 
-score = float(input("Enter score: "))
-if score < 0 or score > 100:
-    print("Invalid score")
-else:
+
+def calculate_grade(score):
+    """Determine grade"""
     if score >= 90:
-        print("Excellent")
-    if 50 <= score < 90:
-        print("Passable")
-    if score < 50:
-        print("Bad")
+        return "Excellent"
+    elif 50 <= score < 90:
+        return "Passable"
+    else:
+        return "Bad"
+
+
+main()
