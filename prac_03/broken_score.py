@@ -4,6 +4,8 @@ CP1404/CP5632 - Practical
 Broken program to determine score status
 """
 
+import random
+
 
 def main():
     """Get integer and determine grade"""
@@ -12,6 +14,8 @@ def main():
         print("Invalid score")
         score = float(input("Enter score: "))
     print(calculate_grade(score))
+    grades = ["Excellent", "Passable", "Bad"]
+    print(random.choice(grades))
 
 
 def calculate_grade(score):
