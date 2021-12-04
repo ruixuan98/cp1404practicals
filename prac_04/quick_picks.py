@@ -14,17 +14,16 @@ def main():
     while quick_picks < 1:
         print("Invalid input. Try again.")
         quick_picks = int(input("How many quick picks? "))
-    generate_quick_picks(quick_picks)
 
-
-def generate_quick_picks():
-    quick_pick_values = []
-    for i in range(NUMBER_OF_LINES):
-        number = random.randint(MINIMUM, MAXIMUM)
-        while number in quick_pick_values:
+    for i in range(quick_picks):
+        quick_picks_values = []
+        for j in range(NUMBER_OF_LINES):
             number = random.randint(MINIMUM, MAXIMUM)
-        quick_pick_values.append(number)
-    return quick_pick_values
+            while number in quick_picks_values:
+                number = random.randint(MINIMUM, MAXIMUM)
+            quick_picks_values.append(number)
+        quick_picks_values.sort()
+        print(" ".join("{:2}".format(number) for number in quick_picks_values))
 
 
 main()
