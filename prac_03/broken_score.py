@@ -14,8 +14,8 @@ def main():
         print("Invalid score")
         score = float(input("Enter score: "))
     print(calculate_grade(score))
-    grades = ["Excellent", "Passable", "Bad"]
-    print(random.choice(grades))
+    random_score = calculate_grade(random.randint(1, 100))
+    print(random_score)
 
 
 def calculate_grade(score):
