@@ -10,6 +10,7 @@ MINIMUM = 1
 
 
 def main():
+    """Asks user to input number of rows of quick picks they want"""
     quick_picks = int(input("How many quick picks? "))
     while quick_picks < 1:
         print("Invalid input. Try again.")
