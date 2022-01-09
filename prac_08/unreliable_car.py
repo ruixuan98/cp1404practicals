@@ -3,10 +3,10 @@ import random
 
 
 class UnreliableCar(Car):
-    """Represent a Car object."""
+    """Represent an Unreliable Car object."""
 
     def __init__(self, name, fuel, reliability):
-        """Initialise a Car instance.
+        """Initialise an Unreliable car instance.
 
         name: string, reference name for car
         fuel: float, one unit of fuel drives one kilometre
@@ -16,27 +16,29 @@ class UnreliableCar(Car):
         self.reliability = float(reliability)
 
     def __str__(self):
-        """Return a string representation of a Car object."""
+        """Return a string representation of an UnrealiableCar object."""
         return "{}, fuel={}, odometer={}".format(self.name, self.fuel,
                                                  self.odometer)
 
     def add_fuel(self, amount):
-        """Add amount to the car's fuel."""
+        """Add amount to the unreliable car's fuel."""
         self.fuel += amount
 
     def drive(self, distance):
-        """Drive the car a given distance.
+        """Drive the unreliable car a given distance.
         Drive given distance if car has enough fuel
         or drive until fuel runs out return the distance actually driven.
         """
-        while self.reliability < random.uniform(0, 100):
+        if self.reliability < random.uniform(0, 100):
             print("Your car has failed!")
-            print(f"You have driven 0 km")
-            random.uniform(0, 100)
-        if distance > self.fuel:
-            distance = self.fuel
-            self.fuel = 0
+            distance = 0
+            return distance
         else:
-            self.fuel -= distance
-        self.odometer += distance
-        return distance
+            random.uniform(0, 100)
+            if distance > self.fuel:
+                distance = self.fuel
+                self.fuel = 0
+            else:
+                self.fuel -= distance
+            self.odometer += distance
+            return distance
