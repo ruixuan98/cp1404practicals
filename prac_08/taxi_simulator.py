@@ -23,6 +23,7 @@ def main():
             print("Taxis available:")
             list_taxis(taxis)
             taxi_choice = int(input("Choose taxi: "))
+            print(f"Bill to date: {total_bill}")
             user_option = input(">>> ").lower()
             try:
                 current_taxi = taxis[taxi_choice]
@@ -33,9 +34,17 @@ def main():
                 distance = float(input("Drive how far? "))
                 current_taxi.start_fare()
                 current_bill = current_taxi.drive(distance)
-                print(f"Bill to date: {current_bill}")
-                print(current_taxi)
-
+                current_bill = current_taxi.get_fare()
+                print(f"Your {current_taxi.name} trip cost you ${current_bill:.2f}")
+                total_bill += current_bill
+                print(f"Bill to date: {total_bill:.2f}")
+                user_option = input(">>> ").lower()
+        else:
+            print("invalid option.")
+            user_option = input(">>> ").lower()
+    print("Total trip cost: ${:.2f}".format(total_bill))
+    print("Taxis are now:")
+    list_taxis(taxis)
 
 
 def list_taxis(taxis):
