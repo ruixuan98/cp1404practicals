@@ -48,6 +48,7 @@ def main():
 
 
 def list_taxis(taxis):
+    """Lists taxis"""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
 
